@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiTienda - Bienvenido</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #ebebeb; }
+        .header { background: #fff159; padding: 0.75rem 0; box-shadow: 0 1px 0 0 rgba(0,0,0,.1); }
+        .header-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; }
+        .logo { font-size: 1.8rem; font-weight: bold; color: #333; text-decoration: none; }
+        .hero-section { background: linear-gradient(135deg, #3483fa 0%, #1259c3 100%); color: white; padding: 3rem 0; }
+        .hero-content { max-width: 1200px; margin: 0 auto; padding: 0 1rem; text-align: center; }
+        .hero-content h1 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 300; }
+        .hero-content p { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; display: grid; grid-template-columns: 1fr 400px; gap: 2rem; }
+        .features { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0,0,0,.15); }
+        .features h2 { color: #333; margin-bottom: 1.5rem; font-size: 1.5rem; }
+        .feature-item { display: flex; align-items: center; margin-bottom: 1.5rem; }
+        .feature-icon { width: 40px; height: 40px; background: #3483fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 1rem; color: white; font-size: 1.2rem; }
+        .feature-text h3 { color: #333; font-size: 1rem; margin-bottom: 0.25rem; }
+        .feature-text p { color: #666; font-size: 0.9rem; }
+        .auth-section { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 1px 2px 0 rgba(0,0,0,.15); }
+        .auth-tabs { display: flex; margin-bottom: 1.5rem; border-bottom: 1px solid #e6e6e6; }
+        .tab-btn { flex: 1; padding: 1rem; border: none; background: none; cursor: pointer; color: #666; font-size: 1rem; border-bottom: 2px solid transparent; }
+        .tab-btn.active { color: #3483fa; border-bottom-color: #3483fa; }
+        .form-group { margin-bottom: 1rem; }
+        label { display: block; margin-bottom: 0.5rem; color: #333; font-size: 0.9rem; }
+        input { width: 100%; padding: 0.75rem; border: 1px solid #e6e6e6; border-radius: 6px; font-size: 1rem; }
+        input:focus { outline: none; border-color: #3483fa; }
+        .btn { width: 100%; padding: 0.75rem; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer; margin-top: 1rem; font-weight: 500; }
+        .btn-primary { background: #3483fa; color: white; }
+        .btn-primary:hover { background: #2968c8; }
+        .btn-success { background: #00a650; color: white; }
+        .btn-success:hover { background: #009344; }
+        .message { padding: 0.75rem; border-radius: 6px; margin-bottom: 1rem; font-size: 0.9rem; }
+        .success { background: #d1edff; color: #0066cc; border: 1px solid #b3d9ff; }
+        .error { background: #ffe6e6; color: #cc0000; border: 1px solid #ffb3b3; }
+        @media (max-width: 768px) {
+            .container { grid-template-columns: 1fr; }
+            .hero-content h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <a href="/" class="logo">MiTienda</a>
+        </div>
+    </div>
+
+    <div class="hero-section">
+        <div class="hero-content">
+            <h1>Comprá y vendé con la app más usada de Argentina</h1>
+            <p>Millones de productos te esperan</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="features">
+            <h2>¿Por qué elegir MiTienda?</h2>
+            <div class="feature-item">
+                <div class="feature-icon">🚚</div>
+                <div class="feature-text">
+                    <h3>Envío gratis</h3>
+                    <p>En miles de productos</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🔒</div>
+                <div class="feature-text">
+                    <h3>Seguridad</h3>
+                    <p>Comprá con protección</p>
+                </div>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💳</div>
+                <div class="feature-text">
+                    <h3>Cuotas sin interés</h3>
+                    <p>Con tarjetas seleccionadas</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="auth-section">
+            <div class="auth-tabs">
+                <button class="tab-btn active" onclick="showRegister()">Registrarse</button>
+                <button class="tab-btn" onclick="showLogin()">Iniciar Sesión</button>
+            </div>
+
+            <div id="message"></div>
+
+            <!-- Formulario de Registro -->
+            <div id="registerForm">
+                <h3 style="margin-bottom: 1rem; color: #333;">Crear Nueva Cuenta</h3>
+                <form id="registerFormElement">
+                    <div class="form-group">
+                        <label for="regUsername">Nombre de Usuario:</label>
+                        <input type="text" id="regUsername" name="username" required minlength="3">
+                    </div>
+                    <div class="form-group">
+                        <label for="regEmail">Email:</label>
+                        <input type="email" id="regEmail" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword">Contraseña:</label>
+                        <input type="password" id="regPassword" name="password" required minlength="6">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Contraseña:</label>
+                        <input type="password" id="confirmPassword" required minlength="6">
+                    </div>
+                    <button type="submit" class="btn btn-success">Registrarse</button>
+                </form>
+            </div>
+
+            <!-- Formulario de Login -->
+            <div id="loginForm" style="display: none;">
+                <h3 style="margin-bottom: 1rem; color: #333;">Iniciar Sesión</h3>
+                <form id="loginFormElement">
+                    <div class="form-group">
+                        <label for="loginUsername">Usuario o Email:</label>
+                        <input type="text" id="loginUsername" name="username" required placeholder="Usuario o email">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Contraseña:</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Ingresar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Verificar si ya está logueado
+        if (localStorage.getItem('token')) {
+            window.location.href = '/shop';
+        }
+
+        function showRegister() {
+            document.getElementById('registerForm').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            document.querySelectorAll('.tab-btn')[1].classList.remove('active');
+        }
+
+        function showLogin() {
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.querySelectorAll('.tab-btn')[0].classList.remove('active');
+            document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        }
+
+        // Registro
+        document.getElementById('registerFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('regUsername').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            
+            // Validaciones del lado cliente
+            if (username.length < 3) {
+                showMessage('El nombre de usuario debe tener al menos 3 caracteres', 'error');
+                return;
+            }
+            
+            if (!email || !email.includes('@')) {
+                showMessage('Por favor ingresa un email válido', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage('La contraseña debe tener al menos 6 caracteres', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage('Las contraseñas no coinciden', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/auth/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, email, password })
+                });
+                
+                const message = await response.text();
+                
+                if (response.ok) {
+                    showMessage('Usuario registrado exitosamente. Ahora puedes iniciar sesión.', 'success');
+                    document.getElementById('registerFormElement').reset();
+                    setTimeout(() => showLogin(), 2000);
+                } else {
+                    showMessage(message, 'error');
+                }
+            } catch (error) {
+                showMessage('Error de conexión', 'error');
+            }
+        });
+
+        // Login
+        document.getElementById('loginFormElement').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                if (response.ok) {
+                    const token = await response.text();
+                    localStorage.setItem('token', token);
+                    showMessage('Login exitoso', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/shop';
+                    }, 1000);
+                } else {
+                    const error = await response.text();
+                    showMessage(error, 'error');
+                }
+            } catch (error) {
+                showMessage('Error de conexión', 'error');
+            }
+        });
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="${type}">${text}</div>`;
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

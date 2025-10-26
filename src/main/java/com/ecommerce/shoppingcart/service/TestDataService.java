@@ -1,0 +1,1 @@
+// Archivo eliminado - funcionalidad movida a DataInitializer

@@ -55,7 +55,7 @@ Backend : Spring Boot, Spring Security, JPA/Hibernate
 
 Base de Datos : MySQL
 
-Frontend : HTML5, CSS3, JavaScript (Vanilla)
+Frontend : HTML5, CSS3, JavaScript
 
 Autenticación : JWT
 
@@ -75,12 +75,4 @@ Admin : admin / admin123
 
 Usuario : user / user123
 
-🎨 Capturas
-Panel de administración con analytics completos
-
-Carrito de compras funcional
-
-Sistema de login/registro
-
-Gestión de productos en tiempo real
 

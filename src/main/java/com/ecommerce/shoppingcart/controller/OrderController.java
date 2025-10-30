@@ -1,13 +1,19 @@
 package com.ecommerce.shoppingcart.controller;
 
-import com.ecommerce.shoppingcart.model.Order;
+import com.ecommerce.shoppingcart.dto.OrderRequest;
+import com.ecommerce.shoppingcart.dto.OrderResponse;
 import com.ecommerce.shoppingcart.service.OrderService;
+import jakarta.validation.Valid;
+import java.util.List;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Map;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/orders")
@@ -21,23 +27,16 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createOrder(@RequestBody Map<String, Object> request) {
-        try {
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
-            @SuppressWarnings("unchecked")
-            List<Map<String, Object>> cartItems = (List<Map<String, Object>>) request.get("items");
-            
-            Order order = orderService.createOrder(username, cartItems);
-            return ResponseEntity.ok(Map.of("orderId", order.getId(), "message", "Orden creada exitosamente"));
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
-        }
+    public ResponseEntity<OrderResponse> createOrder(@Valid @RequestBody OrderRequest request) {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        OrderResponse response = orderService.createOrder(username, request.getItems());
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getUserOrders() {
+    public ResponseEntity<List<OrderResponse>> getUserOrders() {
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
-        List<Order> orders = orderService.getUserOrders(username);
+        List<OrderResponse> orders = orderService.getUserOrders(username);
         return ResponseEntity.ok(orders);
     }
 }

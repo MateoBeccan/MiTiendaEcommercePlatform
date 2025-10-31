@@ -1,8 +1,8 @@
-🛒 MiTienda - E-commerce Platform
+MiTienda - E-commerce Platform
 Sistema de comercio electrónico completo desarrollado con Spring Boot y MySQL , que incluye gestión de productos, carrito de compras, sistema de órdenes y panel administrativo con analytics.
 
-🚀 Características Principales
-👤 Gestión de Usuarios
+ Características Principales
+Gestión de Usuarios
 Registro con email, username y contraseña
 
 Login con username o email
@@ -13,7 +13,7 @@ Cambio de contraseña
 
 Eliminación de cuenta
 
-🛍️ E-commerce
+E-commerce
 Catálogo de productos con categorías
 
 Búsqueda en tiempo real
@@ -37,7 +37,7 @@ Métricas de negocio (ingresos, clientes, órdenes)
 
 Vista detallada de cada venta
 
-🎯 Funcionalidades Técnicas
+Funcionalidades Técnicas
 Autenticación JWT con roles (USER/ADMIN)
 
 Validación de stock en tiempo real
@@ -50,7 +50,7 @@ Responsive design
 
 Manejo de errores robusto
 
-🛠️ Tecnologías
+Tecnologías
 Backend : Spring Boot, Spring Security, JPA/Hibernate
 
 Base de Datos : MySQL
@@ -61,7 +61,7 @@ Autenticación : JWT
 
 Arquitectura : REST API
 
-📦 Instalación
+Instalación
 Clonar repositorio
 
 Configurar MySQL en application.properties
@@ -70,7 +70,7 @@ Ejecutar : mvn spring-boot:run
 
 Acceder : http://localhost:8080
 
-👥 Usuarios de Prueba
+Usuarios de Prueba
 Admin : admin / admin123
 
 Usuario : user / user123
